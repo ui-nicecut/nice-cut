@@ -15,7 +15,6 @@ interface HairStylistProps {
 export default function HairStylistDialog({ stylist, open, onClose }: HairStylistProps) {
 
   useEffect(() => {
-    console.log('resetting form', stylist)
     setStylistForm(initialValues());
   }, [open, stylist]);
 

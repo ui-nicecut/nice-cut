@@ -20,3 +20,13 @@ code {
 .page {
   padding: 32px 20px;
 }
+
+.image-wrapper {
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0 0 0 0;
+  }
+}
