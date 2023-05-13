@@ -1,8 +1,10 @@
 .sidebar {
   width: 360px;
   background-color: #F7F2FA;
-  padding: 16px 8px;
+  padding: 16px 12px;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
 
   .logo-wrapper {
     display: flex;
