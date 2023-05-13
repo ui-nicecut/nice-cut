@@ -9,6 +9,7 @@ import { Routes, Route } from 'react-router-dom';
 import AdminLayout from './admin/admin-layout/AdminLayout';
 import Dashboard from './admin/dashboard/Dashboard';
 import HairStylists from './admin/hair-stylists/HairStylists';
+import Schedule from './admin/schedule/Schedule';
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
       <Route path="admin" element={<AdminLayout />}>
         <Route path="dashboard" element={<Dashboard />} />
         <Route path="hair-stylists" element={<HairStylists />} />
+        <Route path="schedule" element={<Schedule />} />
       </Route>
       {/* <Route path="*" element={<NoMatch />} /> */}
     </Routes>
