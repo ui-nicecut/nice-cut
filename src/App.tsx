@@ -10,10 +10,14 @@ import AdminLayout from './admin/admin-layout/AdminLayout';
 import ClientLayout from './client/client-layout/ClientLayout';
 import Dashboard from './admin/dashboard/Dashboard';
 import HairStylists from './admin/hair-stylists/HairStylists';
+
 import Appointment from './client/appointment/Appointment';
 import AppointmentService from './client/appointmentservice/AppointmentService';
 import AppointmentTime from './client/appointmenttime/AppointmentTime';
 import AppointmentConfirm from './client/appointmentconfirm/AppointmentConfirm';
+
+import Services from './admin/services/Services';
+
 
 const App = () => {
   return (
@@ -21,6 +25,8 @@ const App = () => {
       <Route path="admin" element={<AdminLayout />}>
         <Route path="dashboard" element={<Dashboard />} />
         <Route path="hair-stylists" element={<HairStylists />} />
+        <Route path="services" element={<Services />} />
+        {/* <Route path="schedule" element={<ScheduleDialog />} /> */}
       </Route>
       <Route path="client" element={<ClientLayout />}>
         <Route path="appointment" element={<Appointment />} />

@@ -1,3 +1,5 @@
+import { Schedule } from "./Schedule";
+
 export interface HairStylist {
   id: string;
   firstName: string;
@@ -5,4 +7,5 @@ export interface HairStylist {
   phoneNumber: string;
   email: string;
   birthDate: string;
+  schedule?: Schedule;
 }
