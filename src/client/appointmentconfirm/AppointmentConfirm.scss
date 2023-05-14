@@ -1,0 +1,50 @@
+.dashboard-card {
+  flex: 2;
+  border: 1px solid #CAC4D0;
+  position: relative;
+  border-radius: 16px;
+  background-color: #FEF7FF;
+
+  &.small {
+    flex: 1;
+    min-width: 200px;
+
+    .card-content > :nth-child(2) {
+      margin-top: 8px;
+    }
+  }
+
+  .card-content {
+    position: absolute;
+    inset: 0 0 0 0;
+    padding: 16px;
+
+    > :nth-child(2) {
+      margin-top: 12px;
+    }
+  }
+}
+
+.dashboard-card:after {
+  content: "";
+  display: block;
+  padding-bottom: 40%;
+}
+
+.selected {
+  background-color: blue;
+  color: white;
+}
+
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 800px; /* adjust as needed */
+  margin: 0 auto; /* center the row horizontally */
+}
+
+.button-row > * {
+  flex-basis: calc(100% / 7); /* adjust the spacing as needed */
+  margin-bottom: 1rem; /* adjust the spacing as needed */
+}
