@@ -94,50 +94,50 @@ export default function ScheduleDialog({ stylist, open, onClose }: ScheduleProps
   }
 
   return (
-    <Dialog open={open} onClose={onClose}>
+    <Dialog open={open} onClose={onClose} maxWidth="md">
       <DialogTitle>
         Edit work schedule
       </DialogTitle>
       <DialogContent>
-    <TableContainer>
-      <Table>
-        <TableHead>
-          <TableRow>
-            <TableCell />
-            {selectedCells.days.map((day) => (
-              <TableCell key={day.name}>{day.name}</TableCell>
-            ))}
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {Array.from({ length: 14 }).map((_, hourIndex) => (
-            <TableRow
-              key={hourIndex}
-              className={hourIndex % 2 !== 0 ? 'hidden-row' : ''}
-            >
-              <TableCell component="th" scope="row">
-                {8 + hourIndex}:00 - {10 + hourIndex}:00
-              </TableCell>
-              {selectedCells.days.map((day, dayIndex) => {
-                const hour = day.hours[hourIndex];
-                const isChecked = hour.selected;
-
-                return (
-                  <TableCell key={dayIndex}>
-                    <Checkbox
-                      checked={isChecked}
-                      icon={<CheckBoxOutlineBlankIcon />}
-                      checkedIcon={<CheckBoxIcon />}
-                      onClick={() => handleCellClick(dayIndex, hourIndex)}
-                    />
-                  </TableCell>
-                );
-              })}
+      <TableContainer>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell />
+              {selectedCells.days.map((day) => (
+                <TableCell key={day.name}>{day.name}</TableCell>
+              ))}
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+          </TableHead>
+          <TableBody>
+            {Array.from({ length: 14 }).map((_, hourIndex) => (
+              <TableRow
+                key={hourIndex}
+                className={hourIndex % 2 !== 0 ? 'hidden-row' : ''}
+              >
+                <TableCell component="th" scope="row">
+                  {8 + hourIndex}:00 - {10 + hourIndex}:00
+                </TableCell>
+                {selectedCells.days.map((day, dayIndex) => {
+                  const hour = day.hours[hourIndex];
+                  const isChecked = hour.selected;
+
+                  return (
+                    <TableCell key={dayIndex}>
+                      <Checkbox
+                        checked={isChecked}
+                        icon={<CheckBoxOutlineBlankIcon />}
+                        checkedIcon={<CheckBoxIcon />}
+                        onClick={() => handleCellClick(dayIndex, hourIndex)}
+                      />
+                    </TableCell>
+                  );
+                })}
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
     </DialogContent>
       <DialogActions>
         <Button onClick={onClose}>Cancel</Button>
