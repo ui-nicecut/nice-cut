@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import './ScheduleDialog.scss';
 import { getStore } from '../../lib/util';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Button, Dialog, DialogActions, DialogContent, DialogTitle } from '@mui/material';
@@ -7,12 +7,7 @@ import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
 import CheckBoxIcon from '@mui/icons-material/CheckBox';
 import { Schedule, Hour } from '../../lib/types/Schedule';
 import { HairStylist } from '../../lib/types/HairStylist';
-import { v4 as uuidv4 } from 'uuid';
 import { STYLISTS_KEY } from '../../lib/keys';
-
-// TO DO: 
-// - add close and save button
-// - move table to modal
 
 interface ScheduleProps {
   stylist?: HairStylist;
@@ -21,27 +16,6 @@ interface ScheduleProps {
 }
 
 export default function ScheduleDialog({ stylist, open, onClose }: ScheduleProps) {
-  // useEffect(() => {
-  //   setStylistForm(initialValues());
-  // }, [open, stylist]);
-
-  // const [stylistForm, setStylistForm] = React.useState<HairStylist>(initialValues());
-
-  // const onChange = (field: keyof HairStylist) => (event: React.ChangeEvent<HTMLInputElement>) => {
-  //   setStylistForm({ ...stylistForm, [field]: event.target.value });
-  // };
-
-  function saveEntity() {
-    const stylists = getStore<HairStylist[]>(STYLISTS_KEY, []);
-    if (stylist) {
-      const index = stylists.findIndex(s => s.id === stylist.id);
-      // stylists[index].schedule = stylistForm;
-      localStorage.setItem(STYLISTS_KEY, JSON.stringify(stylists));
-    }
-    onClose();
-  }
-
-
   const getDayName = (dayIndex: number): string => {
     const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
     return days[dayIndex];
@@ -56,7 +30,15 @@ export default function ScheduleDialog({ stylist, open, onClose }: ScheduleProps
       })),
     })),
   };
-  const [selectedCells, setSelectedCells] = useState<Schedule>(initialSelectedCells);
+  const [selectedCells, setSelectedCells] = React.useState<Schedule>(initialSelectedCells);
+
+  function initialValues() {
+    return stylist?.schedule || initialSelectedCells;
+  }
+
+  useEffect(() => {
+    setSelectedCells(initialValues());
+  }, [open, stylist]);
 
   const handleCellClick = (dayIndex: number, hourIndex: number) => {
     const newSelectedCells: Schedule = {
@@ -100,6 +82,16 @@ export default function ScheduleDialog({ stylist, open, onClose }: ScheduleProps
     };
     return selectedSchedule;
   };
+
+  function saveEntity() {
+    const stylists = getStore<HairStylist[]>(STYLISTS_KEY, []);
+    if (stylist) {
+      const index = stylists.findIndex(s => s.id === stylist.id);
+      stylists[index].schedule = generateSelectedHours();
+      localStorage.setItem(STYLISTS_KEY, JSON.stringify(stylists));
+    }
+    onClose();
+  }
 
   return (
     <Dialog open={open} onClose={onClose}>
@@ -145,12 +137,11 @@ export default function ScheduleDialog({ stylist, open, onClose }: ScheduleProps
           ))}
         </TableBody>
       </Table>
-      <button onClick={() => console.log(generateSelectedHours())}>Save Schedule</button>
     </TableContainer>
     </DialogContent>
       <DialogActions>
         <Button onClick={onClose}>Cancel</Button>
-        {/* <Button onClick={saveEntity}>Save</Button> */}
+        <Button onClick={saveEntity}>Save</Button>
       </DialogActions>
     </Dialog>
   );
