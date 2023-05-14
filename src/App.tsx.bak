@@ -17,7 +17,6 @@ import AppointmentTime from './client/appointmenttime/AppointmentTime';
 import AppointmentConfirm from './client/appointmentconfirm/AppointmentConfirm';
 import Home from './client/home/Home';
 import Servicii from './client/servicii/Servicii';
-import Contact from './client/contact/Contact';
 
 import Services from './admin/services/Services';
 
@@ -38,7 +37,6 @@ const App = () => {
         <Route path="appointment-confirm" element={<AppointmentConfirm />} />
 		<Route path="home" element={<Home />} />
 		<Route path="services" element={<Servicii />} />
-		<Route path="contact" element={<Contact />} />
       </Route>
       {/* <Route path="*" element={<NoMatch />} /> */}
     </Routes>

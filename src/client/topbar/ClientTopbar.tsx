@@ -14,8 +14,8 @@ export default function ClientTopbar() {
         <img src="/logo.png" alt="logo" className='logo' />
       </div>
       <Typography variant='subtitle2' sx={{ pl: 1, mb: 1, mt: 2 }}>Sections</Typography>
-      <MenuItem label='Home' to='/client/dashboard' />
-      <MenuItem label='Services' to='/client/hair-stylists' />
+      <MenuItem label='Home' to='/client/home' />
+      <MenuItem label='Services' to='/client/services' />
       <MenuItem label='Appointment' to='/client/appointment' />
       <MenuItem label='Contact' to='/client/contact' />
       <Box sx={{ flexGrow: 1 }} />

@@ -18,7 +18,7 @@ export default function Dashboard() {
   return (
     <div className='page'>
       <Box sx={{ display: 'flex', alignItems: 'center', mb: 3 }}>
-        <Typography variant='h4' component='div' sx={{ flexGrow: 1 }}>Dashboard</Typography>
+        <Typography variant='h4' component='div' sx={{ flexGrow: 1 }}>Dashboad</Typography>
       </Box>
       <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2 }}>
         <div className='dashboard-card'>

@@ -1,0 +1,8 @@
+.dashboard-card:small {
+  flex: 2;
+  border: 1px solid #CAC4D0;
+  position: relative;
+  border-radius: 16px;
+  background-color: #FEF7FF;
+  padding: 16px;
+}
