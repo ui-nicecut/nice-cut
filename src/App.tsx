@@ -10,7 +10,6 @@ import AdminLayout from './admin/admin-layout/AdminLayout';
 import Dashboard from './admin/dashboard/Dashboard';
 import HairStylists from './admin/hair-stylists/HairStylists';
 import Services from './admin/services/Services';
-import Schedule from './admin/schedule/Schedule';
 
 const App = () => {
   return (
@@ -19,7 +18,7 @@ const App = () => {
         <Route path="dashboard" element={<Dashboard />} />
         <Route path="hair-stylists" element={<HairStylists />} />
         <Route path="services" element={<Services />} />
-        <Route path="schedule" element={<Schedule />} />
+        {/* <Route path="schedule" element={<ScheduleDialog />} /> */}
       </Route>
       {/* <Route path="*" element={<NoMatch />} /> */}
     </Routes>

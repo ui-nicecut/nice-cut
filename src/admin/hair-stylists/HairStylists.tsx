@@ -6,12 +6,14 @@ import { Box, Button, Card, CardActions, CardContent, IconButton, Typography } f
 import { STYLISTS_KEY } from '../../lib/keys';
 import HairStylistDialog from '../hair-stylist-dialog/HairStylistDialog';
 import { HairStylist } from '../../lib/types/HairStylist';
+import ScheduleDialog from '../schedule-dialog/ScheduleDialog';
 
 export default function HairStylists() {
 
   const [stylists, setStylists] = React.useState([]);
   const [edititingStylist, setEditingStylist] = React.useState<HairStylist>();
   const [dialogOpen, setDialogOpen] = React.useState(false);
+  const [scheduleDialogOpen, setScheduleDialogOpen] = React.useState(false);
 
   useEffect(refreshResults, []);
 
@@ -30,6 +32,17 @@ export default function HairStylists() {
     setDialogOpen(true);
   }
 
+  function handleScheduleDialogClose() {
+    setScheduleDialogOpen(false);
+    setEditingStylist(undefined);
+    refreshResults();
+  }
+
+  function editSchedule(entity: HairStylist) {
+    setEditingStylist(entity);
+    setScheduleDialogOpen(true);
+  }
+
   return (
     <div className='page'>
       <Box sx={{ display: 'flex', alignItems: 'center', mb: 3 }}>
@@ -38,15 +51,16 @@ export default function HairStylists() {
       </Box>
       <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2 }}>
         {stylists.map((stylist: HairStylist) => (
-          <HairStylistCard key={stylist.id} stylist={stylist} onEdit={editEntity} />)
+          <HairStylistCard key={stylist.id} stylist={stylist} onEdit={editEntity} onEditSchedule={editSchedule}/>)
         )}
       </Box>
       <HairStylistDialog open={dialogOpen} onClose={handleDialogClose} stylist={edititingStylist} />
+      <ScheduleDialog open={scheduleDialogOpen} onClose={handleScheduleDialogClose} stylist={edititingStylist} />
     </div>
   );
 }
 
-function HairStylistCard({ stylist, onEdit }: { stylist: HairStylist, onEdit?: (stylist: HairStylist) => void }) {
+function HairStylistCard({ stylist, onEdit, onEditSchedule }: { stylist: HairStylist, onEdit?: (stylist: HairStylist) => void, onEditSchedule?: (stylist: HairStylist) => void }) {
   return (
     <Box sx={{ width: 360 }}>
       <Card variant="outlined">
@@ -67,8 +81,8 @@ function HairStylistCard({ stylist, onEdit }: { stylist: HairStylist, onEdit?: (
           </Box>
         </CardContent>
         <CardActions sx={{ justifyContent: 'flex-end' }}>
-          <Button variant='outlined' onClick={() => onEdit?.(stylist)}>Edit</Button>
-          <Button variant="contained">See schedule</Button>
+          <Button variant='outlined' onClick={() => onEdit?.(stylist)}>Edit details</Button>
+          <Button variant="contained" onClick={() => onEditSchedule?.(stylist)}>Edit schedule</Button>
         </CardActions>
       </Card>
     </Box>
