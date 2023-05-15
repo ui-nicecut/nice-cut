@@ -63,7 +63,7 @@ export default function AppointmentService() {
       </Box>
 
       <Link to={'/client/appointment'} className={classnames('menu-item')}>
-        <Typography variant='subtitle2'>Back</Typography>
+      <Button variant='contained'>Back</Button>
       </Link>
     </div>
   )

@@ -18,6 +18,7 @@ export default function ClientTopbar() {
       <MenuItem label='Services' to='/client/services' />
       <MenuItem label='Appointment' to='/client/appointment' />
       <MenuItem label='Contact' to='/client/contact' />
+      <MenuItem label='My account' to='/client/account' />
       
     </div>
   )

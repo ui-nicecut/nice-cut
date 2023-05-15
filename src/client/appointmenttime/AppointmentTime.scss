@@ -48,3 +48,11 @@
   flex-basis: calc(100% / 7); /* adjust the spacing as needed */
   margin-bottom: 1rem; /* adjust the spacing as needed */
 }
+
+.barber-card {
+  border: 1px solid #CAC4D0;
+  position: relative;
+  border-radius: 16px;
+  background-color: #FEF7FF;
+  padding: 16px;
+}

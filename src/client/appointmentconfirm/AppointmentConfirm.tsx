@@ -23,27 +23,17 @@ export default function Dashboard() {
   function Barber({ name, rating }: { name: string, rating: number }) {
     const to = '/client/appointment'
 
-    const url = useResolvedPath(to).pathname;
-    const active = window.location.pathname === url;
     return (
-      <div className='dashboard-card small'>
-
-
+      <div className='barber-card'>
         <Box sx={{ display: 'flex', alignItems: 'center', mb: 3 }}>
-        <img src="/scissors.png" alt="logo" className='logo' width = "40" height = "40" />
-            <Box sx={{ flexGrow: 1, ml: 2 }} >
-              <Typography variant="subtitle2" component="div">{name}</Typography>
-              <Typography variant="body2" component="div">{rating} / 5</Typography>
-            </Box>
-            <Rating name="half-rating-read" defaultValue={rating} precision={0.5} readOnly />
+          <img src="/scissors.png" alt="logo" className='logo' width="40" height="40" />
+          <Box sx={{ flexGrow: 1, ml: 2 }} >
+            <Typography variant="subtitle2" component="div">{name}</Typography>
+            <Typography variant="body2" component="div">{rating} / 5</Typography>
           </Box>
-          
-          
-
-
+          <Rating name="half-rating-read" defaultValue={rating} precision={0.5} readOnly />
+        </Box>
       </div>
-
-      
     );
   }
 
@@ -53,18 +43,19 @@ export default function Dashboard() {
     const url = useResolvedPath(to).pathname;
     const active = window.location.pathname === url;
     return (
-      <div className='dashboard-card small'>
-        <div className='card-content'>
-          <Typography variant='h5' component='div'>{name}</Typography>
-          <Typography variant='h6' component='div'>{price} RON - {duration} minutes</Typography>
 
-        </div>
-      </div>
+<div className='barber-card'>
+<Box sx={{ display: 'flex', alignItems: 'center', mb: 3 }}>
+  <Box sx={{ flexGrow: 1, ml: 2 }} >
+    <Typography variant="subtitle2" component="div">{name}</Typography>
+    <Typography variant="body2" component="div">{price} RON - {duration} minutes</Typography>
+  </Box>
+</Box>
+</div>
 
       
     );
   }
-
 
 
   return (
@@ -72,7 +63,7 @@ export default function Dashboard() {
       
 
       <Box sx={{ flexGrow: 1 }}>
-      <div className='dashboard-card small'>
+      <div className='barber-card'>
             <div className='card-content'>
             <Box sx={{ display: 'flex', alignItems: 'center', mb: 3 }}>
               <Typography variant='h4' component='div' sx={{ flexGrow: 1 }}>Appointment summary</Typography>
@@ -80,11 +71,15 @@ export default function Dashboard() {
             <Box sx={{ display: 'flex', gap: 3, mb: 2 }}>
               <Barber name = 'Mihai' rating = {4.5}/>
               <Service name = 'Simple haircut' price = {60} duration = {30}/>
-              <div className='dashboard-card small'>
-                <div className='card-content'>
-                  <Typography variant='h5' component='div'>Date: 12th of July 2023</Typography>
-                  <Typography variant='h6' component='div'>Time: 12:00</Typography>
-                </div>
+
+
+              <div className='barber-card'>
+                <Box sx={{ display: 'flex', alignItems: 'center', mb: 3 }}>
+                  <Box sx={{ flexGrow: 1, ml: 2 }} >
+                    <Typography variant="subtitle2" component="div">Date: 12th of July 2023</Typography>
+                    <Typography variant="body2" component="div">Time: 12:00</Typography>
+                  </Box>
+                </Box>
               </div>
             </Box>
             </div>
@@ -93,11 +88,11 @@ export default function Dashboard() {
       </Box>
 
       <Link to={'/client/appointment-time'} className={classnames('menu-item')}>
-          <Typography variant='subtitle2'>Back</Typography>
+      <Button variant='contained'>Back</Button>
         </Link>
 
         <Link to={'/client/appointment'} className={classnames('menu-item')}>
-          <Typography variant='subtitle2'>Confirm</Typography>
+        <Button variant='contained'>Confirm</Button>
         </Link>
     </div>
   )

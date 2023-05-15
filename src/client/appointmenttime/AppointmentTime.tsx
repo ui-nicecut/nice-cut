@@ -20,30 +20,20 @@ export default function Dashboard() {
   const numberFormatCurrency = useMemo(() => new Intl.NumberFormat('en-US', { style: 'currency', currency: 'RON' }), []);
   const numberFormat = useMemo(() => new Intl.NumberFormat('en-US'), []);
 
-  function Barber({ name, rating }: { name: string, rating: number }) {
+ function Barber({ name, rating }: { name: string, rating: number }) {
     const to = '/client/appointment'
 
-    const url = useResolvedPath(to).pathname;
-    const active = window.location.pathname === url;
     return (
-      <div className='dashboard-card small'>
-
-
+      <div className='barber-card'>
         <Box sx={{ display: 'flex', alignItems: 'center', mb: 3 }}>
-        <img src="/scissors.png" alt="logo" className='logo' width = "40" height = "40" />
-            <Box sx={{ flexGrow: 1, ml: 2 }} >
-              <Typography variant="subtitle2" component="div">{name}</Typography>
-              <Typography variant="body2" component="div">{rating} / 5</Typography>
-            </Box>
-            <Rating name="half-rating-read" defaultValue={rating} precision={0.5} readOnly />
+          <img src="/scissors.png" alt="logo" className='logo' width="40" height="40" />
+          <Box sx={{ flexGrow: 1, ml: 2 }} >
+            <Typography variant="subtitle2" component="div">{name}</Typography>
+            <Typography variant="body2" component="div">{rating} / 5</Typography>
           </Box>
-          
-          
-
-
+          <Rating name="half-rating-read" defaultValue={rating} precision={0.5} readOnly />
+        </Box>
       </div>
-
-      
     );
   }
 
@@ -53,7 +43,7 @@ export default function Dashboard() {
     const url = useResolvedPath(to).pathname;
     const active = window.location.pathname === url;
     return (
-      <div className='dashboard-card small'>
+      <div className='barber-card'>
         <div className='card-content'>
           <Typography variant='h5' component='div'>{name}</Typography>
           <Typography variant='h6' component='div'>{price} RON - {duration} minutes</Typography>
@@ -72,6 +62,11 @@ export default function Dashboard() {
 
   for (let i = 1; i <= 31; i++) {
     const day = { id: i, label: `${i}` };
+    buttons.push(day);
+  }
+
+  for (let i = 1; i <= 4; i++) {
+    const day = { id: 31 + i, label: `${i}` };
     buttons.push(day);
   }
 
@@ -105,7 +100,8 @@ export default function Dashboard() {
                   <Button
                     key={button.id}
                     onClick={() => setSelectedButton(button.id)}
-                    className={selectedButton === button.id ? 'selected' : ''}
+                    variant={selectedButton === button.id ? 'contained' : 'outlined'}
+                    //className={selectedButton === button.id ? 'selected' : ''}
                   >
                     {button.label}
                   </Button>
@@ -123,15 +119,16 @@ export default function Dashboard() {
                   <Button
                     key={button.id}
                     onClick={() => setSelectedTime(button.id)}
-                    className={selectedTime === button.id ? 'selected' : ''}
+                    variant={selectedTime === button.id ? 'contained' : 'outlined'}
+                    //className={selectedTime === button.id ? 'selected' : ''}
                   >
                     {button.label}
                   </Button>
                 ))}
               </div>
-
+                  <br></br>
               <Link to={'/client/appointment-confirm'} className={classnames('menu-item')}>
-                <Typography variant='subtitle2'>Confirm</Typography>
+              <Button variant='contained'>Confirm</Button>
               </Link>
               
             </div>
@@ -141,7 +138,7 @@ export default function Dashboard() {
       </Box>
 
       <Link to={'/client/appointment-service'} className={classnames('menu-item')}>
-          <Typography variant='subtitle2'>Back</Typography>
+      <Button variant='contained'>Back</Button>
         </Link>
     </div>
   )

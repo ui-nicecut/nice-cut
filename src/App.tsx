@@ -18,6 +18,7 @@ import AppointmentConfirm from './client/appointmentconfirm/AppointmentConfirm';
 import Home from './client/home/Home';
 import Servicii from './client/servicii/Servicii';
 import Contact from './client/contact/Contact';
+import Account from './client/account/Account';
 
 import Services from './admin/services/Services';
 
@@ -36,6 +37,7 @@ const App = () => {
         <Route path="appointment-service" element={<AppointmentService />} />
         <Route path="appointment-time" element={<AppointmentTime />} />
         <Route path="appointment-confirm" element={<AppointmentConfirm />} />
+        <Route path="account" element={<Account />} />
 		<Route path="home" element={<Home />} />
 		<Route path="services" element={<Servicii />} />
 		<Route path="contact" element={<Contact />} />
