@@ -1,5 +1,5 @@
 import React from 'react';
-import './ClientTopbar.scss';
+import './ClientTopbar.scoped.scss';
 import { Avatar, Box, Typography } from '@mui/material';
 import {
   Link,
@@ -9,25 +9,16 @@ import classnames from 'classnames';
 
 export default function ClientTopbar() {
   return (
-    <div className='sidebar'>
+    <div className='topbar'>
       <div className='logo-wrapper image-wrapper'>
         <img src="/logo.png" alt="logo" className='logo' />
       </div>
-      <Typography variant='subtitle2' sx={{ pl: 1, mb: 1, mt: 2 }}>Sections</Typography>
+      <Box sx={{ flexGrow: 1 }} />
       <MenuItem label='Home' to='/client/home' />
       <MenuItem label='Services' to='/client/services' />
       <MenuItem label='Appointment' to='/client/appointment' />
       <MenuItem label='Contact' to='/client/contact' />
-      <Box sx={{ flexGrow: 1 }} />
-      <Box sx={{ display: 'flex', alignItems: 'center' }}>
-        <Avatar sx={{ width: 40, height: 40, mr: 1 }}>A</Avatar>
-        <Box sx={{ flexGrow: 1 }}>
-          <Typography variant="subtitle2" component="div">Client</Typography>
-          <Typography variant="body2" component="div" sx={{ textDecoration: 'underline', cursor: 'pointer' }}>
-            Sign out
-          </Typography>
-        </Box>
-      </Box>
+      
     </div>
   )
 }
