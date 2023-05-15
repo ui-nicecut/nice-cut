@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import './Servicii.scss';
+import './Servicii.scoped.scss';
 import { Avatar, Box, Button, Rating, Typography } from '@mui/material';
 import {
   Link,

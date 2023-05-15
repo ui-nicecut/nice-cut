@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import './Appointment.scss';
+import './Appointment.scoped.scss';
 import { Avatar, Box, Button, Rating, Typography } from '@mui/material';
 import {
   Link,
@@ -7,28 +7,12 @@ import {
 } from "react-router-dom";
 import classnames from 'classnames';
 
-export default function Dashboard() {
-
-  const data = {
-    profits: 73286,
-    customers: 1024,
-    newCustomers: 114,
-    returningCustomers: 910,
-    appointments: 1196,
-  }
-
-  const numberFormatCurrency = useMemo(() => new Intl.NumberFormat('en-US', { style: 'currency', currency: 'RON' }), []);
-  const numberFormat = useMemo(() => new Intl.NumberFormat('en-US'), []);
+export default function Appointment() {
 
   function Barber({ name, rating }: { name: string, rating: number }) {
-    const to = '/client/appointment-service'
-
-    const url = useResolvedPath(to).pathname;
-    const active = window.location.pathname === url;
+    const to = '/client/appointment-service';
     return (
-      <div className='dashboard-card small'>
-
-
+      <div className='barber-card'>
         <Box sx={{ display: 'flex', alignItems: 'center', mb: 3 }}>
         <img src="/scissors.png" alt="logo" className='logo' width = "40" height = "40" />
             <Box sx={{ flexGrow: 1, ml: 2 }} >
@@ -37,19 +21,12 @@ export default function Dashboard() {
             </Box>
             <Rating name="half-rating-read" defaultValue={rating} precision={0.5} readOnly />
           </Box>
-          
-          
           <Box sx={{ justifyContent: 'flex-end', display: 'flex' }}>
             <Link to={to}>
               <Button variant='contained'>Select</Button>
             </Link>
           </Box>
-          
-
-
       </div>
-
-      
     );
   }
 
@@ -77,8 +54,6 @@ export default function Dashboard() {
           <Barber name = 'Vlad' rating = {5}/>
           <Barber name = 'Dumitru' rating = {4}/>
         </Box>
-        
-
       </Box>
     </div>
   )
